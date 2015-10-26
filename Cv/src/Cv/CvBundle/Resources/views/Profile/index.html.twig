@@ -1,0 +1,45 @@
+{% extends '::base.html.twig' %}
+{% block body -%}
+    <h1>Liste de tous les profils</h1>
+
+  <table class="table table-condensed table-striped">
+        <thead>
+            <tr>               
+                <th>Image</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Sexe</th>
+                <th>Date de naissance</th>
+                <th>Telephone</th>
+                <th>Email</th>
+                <th colspan="2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>                               
+               <td><img width="60" height="60" src="{{ asset('bundles/cvcv/images/'~ entity.image )}}" alt="{{ entity.nom }} {{ entity.prenom }}" class="img-thumbnail img-responsive"></td>
+
+                <td>{{ entity.nom }}</td>
+                <td>{{ entity.prenom }}</td>
+                <td>{{ entity.sexe }}</td>
+                <td>{% if entity.dateDeNaissance %}{{ entity.dateDeNaissance|date('d-m-Y') }}{% endif %}</td>
+                <td>{{ entity.telephone }}</td>
+                <td>{{ entity.email }}</td>
+                <td>
+                
+                        <a class="btn btn-info" role="button" href="{{ path('profile_show', { 'id': entity.id }) }}">Detail</a>
+                  </td>
+                  <td>
+                        <a class="btn btn-warning" role="button" href="{{ path('profile_edit', { 'id': entity.id }) }}">Modifier</a>                   
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        
+            <a  class="btn btn-success" role="button" href="{{ path('profile_new') }}">
+                Nouveau profil
+            </a>        
+    {% endblock %}

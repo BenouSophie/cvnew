@@ -1,0 +1,100 @@
+/* 
+    Document   : frontalCss
+    Created on : 1 sept. 2015, 13:20:05
+    Author     : skontomarko
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+body {
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    background: url('../images/background_green_wave.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+.panel{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+}
+.credits{
+    font-size: 0.7em;
+}
+.container-fluid{
+    background-color:rgb(123,163,2);
+    border:none;
+}
+#topmenu:before{
+    box-sizing: auto;
+}
+@media screen and (min-width:768px) {
+    .brand {
+        display: inherit;
+         margin:0;
+        padding: 30px 0 10px;
+        text-align: center;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 5em;
+        font-weight: 700;
+        line-height: normal;
+        color: #fff;
+    }
+
+    .top-divider {
+        margin-top: 0;
+    }
+
+    .img-left {
+        float: left;
+        margin-right: 25px;
+    }
+
+
+    .navbar {
+        border-radius: 0;
+    }
+
+    .navbar-header {
+        display: none;
+    }
+
+    .navbar {
+        min-height: 0;
+    }
+
+    .navbar-default {
+        border: none;
+        background: rgb(123,163,2);
+    }
+}
+
+@media screen and (min-width:1200px) {
+    .box:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+.btn-primary,input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="button"].btn-block{
+    background-color:rgb(0,28,168);
+    border-color:rgb(0,28,168);
+}
+#_submit{
+    background-color:rgb(0,28,168);
+    border-color:rgb(0,28,168);
+}
+.modal-content{
+    margin-top: 5em;
+}
+.col-md-4 > div:first-child img {
+    max-width: 200px;
+    height: 200px;
+    margin: 2em;       
+}

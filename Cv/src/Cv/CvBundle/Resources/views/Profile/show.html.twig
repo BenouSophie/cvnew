@@ -1,0 +1,92 @@
+{% extends '::base.html.twig' %}
+ 
+{% block body -%}
+                <div class="page-header text-center ">
+                    <h1>   Profil de {{ entity.nom }} {{ entity.prenom }}</h1>
+                </div>
+<div class="center-show">
+     <div class="row">              
+       <div class="col-md-8">         
+         <div class="panel panel-success">  
+              <img src="{{ asset('bundles/cvcv/images/'~ entity.image )}}" alt="{{ entity.nom }} {{ entity.prenom }}" class="img-rounded img-responsive img img-center">
+        <div class="panel-heading">
+                 <h3 class="panel-title">Texte</h3>
+             </div>
+                 <div class="panel-body">
+                     {{ entity.texteAccueil }}
+                 </div>      
+         </div>
+           </div>
+         </div>             
+     <div class="row">              
+       <div class="col-md-4">         
+         <div class="panel panel-success"> 
+              <div class="panel-heading">
+                 <h3 class="panel-title">Titre Header</h3>
+             </div>
+                 <div class="panel-body">
+                     {{ entity.titreHeader }}
+                 </div> 
+                 <div class="panel-heading">
+             <h3 class="panel-title">Profession</h3>
+             </div>
+                 <div class="panel-body">
+             {{ entity.titreProfession }}
+                     </div> 
+                 <div class="panel-heading">
+                 <h3 class="panel-title">Téléphone</h3>
+             </div>
+                 <div class="panel-body">
+                     {{ entity.telephone }}
+                 </div>
+             </div>
+           </div>
+          <div class="col-md-4"> 
+              <div class="margin-col-right"></div>
+         <div class="panel panel-success">                          
+              <div class="panel-heading">
+             <h3 class="panel-title">Sexe</h3>   
+              </div>
+                 <div class="panel-body">
+                 {{ entity.sexe }}    
+            </div>
+             <div class="panel-heading">
+             <h3 class="panel-title">Date de naissance</h3>
+             </div>
+                 <div class="panel-body">
+             {% if entity.dateDeNaissance %}{{ entity.dateDeNaissance|date('d-m-Y') }}{% endif %}
+                     </div>   
+              <div class="panel-heading">
+             <h3 class="panel-title">Email</h3>
+             </div>
+                 <div class="panel-body">
+             {{ entity.email }}
+                     </div> 
+             </div>
+              </div>
+         </div>
+    </div>
+<div class="center-show">
+ <div class="row">              
+       <div class="col-md-2"> 
+               
+       <a  class="btn btn-primary" role="button" href="{{ path('profile') }}">
+            Retour à la liste
+        </a>
+       </div>
+   <div class="col-md-2"> 
+        <a class="btn btn-warning" role="button" href="{{ path('profile_edit', { 'id': entity.id }) }}">
+            Modifier
+        </a>   
+       
+       </div>
+          <div class="col-md-2"> 
+   {{ form(delete_form) }}
+              </div>
+       
+                </div>
+    </div>
+            
+       
+    
+{% endblock %}

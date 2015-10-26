@@ -1,0 +1,3 @@
+cv_cv_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: CvCvBundle:Default:index }

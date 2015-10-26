@@ -1,0 +1,10 @@
+cv_cv:
+    resource: "@CvCvBundle/Controller"
+    type:     annotation
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+
+

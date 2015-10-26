@@ -1,0 +1,38 @@
+{% extends '::base.html.twig' %}
+{% use 'CvCvBundle::bootstrap_3_layout.html.twig'%}
+{% block body -%}
+<div class="vertical-middle">
+
+
+        <div class="container">
+
+            <div class="panel panel-default">
+
+               <div class="page-header text-center ">
+
+                    <h2 class="panel-title">Modifier le profil de {{ entity.nom }} {{ entity.prenom }}</h2>
+               </div>
+              
+                
+   {{ form(edit_form) }}
+
+                    <tr colspan="2">       
+
+                        <td>
+   {{ form(delete_form) }}
+                            </td>
+
+                            <td>
+                                <a  class="btn btn-primary" role="button" href="{{ path('profile') }}">
+                                    Retour à la liste
+                                </a>
+
+                            </td>  
+                    
+    
+  
+                            </tr>
+                        </div>
+        </div>
+</div>
+{% endblock %}
