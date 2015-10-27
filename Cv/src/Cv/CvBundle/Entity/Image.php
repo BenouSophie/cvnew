@@ -2,6 +2,7 @@
 
 namespace Cv\CvBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -51,6 +52,13 @@ class Image
      */
     protected $file;
     
+  /**
+   *
+   * @var type 
+   * @ORM\ManyToOne(targetEntity="Cv\CvBundle\Entity\Profile",inversedBy="images")
+   * 
+   */
+    protected $profile;
     /**
      * get id
      * @return type
@@ -191,7 +199,29 @@ public function getUploadRootDir(){
 public function isFileUploadedOrExists(ExecutionContextInterface $context)
 {
     if(null === $this->image_path && null === $this->file)
-        $context->addViolationAt('file', 'You have to choose a file', array(), null);   
+        $context->addViolationAt('file', 'Vous devez choisir un fichier', array(), null);   
 }
+
+    /**
+     * Set profile
+     *
+     * @param \Cv\CvBundle\Entity\Profile $profile
+     * @return Image
+     */
+    public function setProfile(\Cv\CvBundle\Entity\Profile $profile = null)
+    {
+        $this->profile = $profile;
+
+        return $this;
+    }
+
+    /**
+     * Get profile
+     *
+     * @return \Cv\CvBundle\Entity\Profile 
+     */
+    public function getProfile()
+    {
+        return $this->profile;
+    }
 }
-?>

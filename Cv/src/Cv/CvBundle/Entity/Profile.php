@@ -4,6 +4,7 @@ namespace Cv\CvBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Profile
@@ -60,9 +61,9 @@ class Profile
     /**
      * @var string
      *
-     * @ORM\Column(name="image", type="string", length=255)
+     * @ORM\OneToMany(targetEntity="Cv\CvBundle\Entity\Image",mappedBy="profile")
      */
-    private $image;
+    protected $images;
 
     /**
      * @var string
@@ -171,6 +172,7 @@ class Profile
         $this->interets = new ArrayCollection();
         $this->langues = new ArrayCollection();
         $this->projets = new ArrayCollection();
+        $this->images = new ArrayCollection();
        
         
     }
@@ -298,29 +300,6 @@ class Profile
     public function getLinkedIn()
     {
         return $this->linkedIn;
-    }
-
-    /**
-     * Set image
-     *
-     * @param string $image
-     * @return Profile
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return string 
-     */
-    public function getImage()
-    {
-        return $this->image;
     }
 
     /**
@@ -459,6 +438,30 @@ class Profile
     public function getEmail()
     {
         return $this->email;
+    }
+    
+    
+    /**
+     * Set image
+     *
+     * @param string $image
+     * @return Profile
+     */
+    public function setImages($images)
+    {
+        $this->images = $images;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string 
+     */
+    public function getImages()
+    {
+        return $this->images;
     }
     
     /**
@@ -693,5 +696,166 @@ class Profile
             $this->projets->removeElement($projet);          
         }
         return $this; 
+    }
+
+    /**
+     * Add images
+     *
+     * @param \Cv\CvBundle\Entity\Image $images
+     * @return Profile
+     */
+    public function addImage(\Cv\CvBundle\Entity\Image $images)
+    {
+        $this->images[] = $images;
+
+        return $this;
+    }
+
+    /**
+     * Remove images
+     *
+     * @param \Cv\CvBundle\Entity\Image $images
+     */
+    public function removeImage(\Cv\CvBundle\Entity\Image $images)
+    {
+        $this->images->removeElement($images);
+    }
+
+    /**
+     * Add competences
+     *
+     * @param \Cv\CvBundle\Entity\Competence $competences
+     * @return Profile
+     */
+    public function addCompetence(\Cv\CvBundle\Entity\Competence $competences)
+    {
+        $this->competences[] = $competences;
+
+        return $this;
+    }
+
+    /**
+     * Remove competences
+     *
+     * @param \Cv\CvBundle\Entity\Competence $competences
+     */
+    public function removeCompetence(\Cv\CvBundle\Entity\Competence $competences)
+    {
+        $this->competences->removeElement($competences);
+    }
+
+    /**
+     * Add formations
+     *
+     * @param \Cv\CvBundle\Entity\Formation $formations
+     * @return Profile
+     */
+    public function addFormation(\Cv\CvBundle\Entity\Formation $formations)
+    {
+        $this->formations[] = $formations;
+
+        return $this;
+    }
+
+    /**
+     * Remove formations
+     *
+     * @param \Cv\CvBundle\Entity\Formation $formations
+     */
+    public function removeFormation(\Cv\CvBundle\Entity\Formation $formations)
+    {
+        $this->formations->removeElement($formations);
+    }
+
+    /**
+     * Add experiences
+     *
+     * @param \Cv\CvBundle\Entity\Experience $experiences
+     * @return Profile
+     */
+    public function addExperience(\Cv\CvBundle\Entity\Experience $experiences)
+    {
+        $this->experiences[] = $experiences;
+
+        return $this;
+    }
+
+    /**
+     * Remove experiences
+     *
+     * @param \Cv\CvBundle\Entity\Experience $experiences
+     */
+    public function removeExperience(\Cv\CvBundle\Entity\Experience $experiences)
+    {
+        $this->experiences->removeElement($experiences);
+    }
+
+    /**
+     * Add interets
+     *
+     * @param \Cv\CvBundle\Entity\Interet $interets
+     * @return Profile
+     */
+    public function addInteret(\Cv\CvBundle\Entity\Interet $interets)
+    {
+        $this->interets[] = $interets;
+
+        return $this;
+    }
+
+    /**
+     * Remove interets
+     *
+     * @param \Cv\CvBundle\Entity\Interet $interets
+     */
+    public function removeInteret(\Cv\CvBundle\Entity\Interet $interets)
+    {
+        $this->interets->removeElement($interets);
+    }
+
+    /**
+     * Add langues
+     *
+     * @param \Cv\CvBundle\Entity\Langue $langues
+     * @return Profile
+     */
+    public function addLangue(\Cv\CvBundle\Entity\Langue $langues)
+    {
+        $this->langues[] = $langues;
+
+        return $this;
+    }
+
+    /**
+     * Remove langues
+     *
+     * @param \Cv\CvBundle\Entity\Langue $langues
+     */
+    public function removeLangue(\Cv\CvBundle\Entity\Langue $langues)
+    {
+        $this->langues->removeElement($langues);
+    }
+
+    /**
+     * Add projets
+     *
+     * @param \Cv\CvBundle\Entity\Projet $projets
+     * @return Profile
+     */
+    public function addProjet(\Cv\CvBundle\Entity\Projet $projets)
+    {
+        $this->projets[] = $projets;
+
+        return $this;
+    }
+
+    /**
+     * Remove projets
+     *
+     * @param \Cv\CvBundle\Entity\Projet $projets
+     */
+    public function removeProjet(\Cv\CvBundle\Entity\Projet $projets)
+    {
+        $this->projets->removeElement($projets);
     }
 }

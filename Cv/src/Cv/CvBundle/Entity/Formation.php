@@ -240,4 +240,34 @@ class Formation
     {
         return $this->profile;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->profile = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add profile
+     *
+     * @param \Cv\CvBundle\Entity\Profile $profile
+     * @return Formation
+     */
+    public function addProfile(\Cv\CvBundle\Entity\Profile $profile)
+    {
+        $this->profile[] = $profile;
+
+        return $this;
+    }
+
+    /**
+     * Remove profile
+     *
+     * @param \Cv\CvBundle\Entity\Profile $profile
+     */
+    public function removeProfile(\Cv\CvBundle\Entity\Profile $profile)
+    {
+        $this->profile->removeElement($profile);
+    }
 }

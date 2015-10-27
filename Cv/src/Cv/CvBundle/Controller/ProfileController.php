@@ -166,7 +166,7 @@ class ProfileController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Modifier','attr' => array('class' => 'btn btn-warning')));
 
         return $form;
     }
